@@ -13,3 +13,16 @@
 </body>
 
 </html>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: #222222;
+        color: white;
+    }
+</style>
