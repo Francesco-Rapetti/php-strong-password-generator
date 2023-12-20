@@ -38,7 +38,7 @@
 
     function generatePassword(): string
     {
-        $letters = 'abcdefghijklmnopqrstuvwxyz';
+        $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $numbers = '0123456789';
         $symbols = '!@#$%^&*()_+';
         $pwdLength = $_GET['pwdLength'];

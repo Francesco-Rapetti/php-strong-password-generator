@@ -112,7 +112,7 @@
         }
 
         if (!moreChar) {
-            if (letters && !numbers && !symbols && pwdLenght > 25) {
+            if (letters && !numbers && !symbols && pwdLenght > 52) {
                 event.preventDefault();
                 warningText.classList.remove('d-none');
                 warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
