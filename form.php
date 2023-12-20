@@ -18,7 +18,7 @@
 
                 <div class="col-6">
                     <div class="mb-3">
-                        <input class="form-control" type="number" name="" id="">
+                        <input class="form-control" type="number" name="pwdLenght" id="pwdLenght">
                     </div>
                 </div>
             </div>
@@ -49,19 +49,19 @@
 
                 <div class="col-6">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="letters">
+                        <input class="form-check-input" value="include" type="checkbox" id="letters" name="letters">
                         <label class="form-check-label" for="letters">
                             Lettere
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="numbers">
+                        <input class="form-check-input" value="include" type="checkbox" id="numbers" name="numbers">
                         <label class="form-check-label" for="numbers">
                             Numeri
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="symbols">
+                        <input class="form-check-input" value="include" type="checkbox" id="symbols" name="symbols">
                         <label class="form-check-label" for="symbols">
                             Simboli
                         </label>
