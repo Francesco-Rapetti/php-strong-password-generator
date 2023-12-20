@@ -41,7 +41,7 @@
         $letters = 'abcdefghijklmnopqrstuvwxyz';
         $numbers = '0123456789';
         $symbols = '!@#$%^&*()_+';
-        $pwdLenght = $_GET['pwdLenght'];
+        $pwdLength = $_GET['pwdLength'];
         $repetitions = $_GET['moreChar'];
         $includeLetters = $_GET['letters'] ?? 'notInclude';
         $includeNumbers = $_GET['numbers'] ?? 'notInclude';
@@ -53,9 +53,9 @@
         $includeNumbers === 'include' ? $parts++ : '';
         $includeSymbols === 'include' ? $parts++ : '';
 
-        $singlePart = floor($pwdLenght / $parts);
+        $singlePart = floor($pwdLength / $parts);
 
-        for ($i = 0; $i < $pwdLenght; $i++) {
+        for ($i = 0; $i < $pwdLength; $i++) {
             $output .= ' ';
         }
 
@@ -71,13 +71,13 @@
             $output = addChars($output, $symbols, $singlePart, $repetitions === 'yes');
         }
 
-        if ($pwdLenght % $parts !== 0) {
+        if ($pwdLength % $parts !== 0) {
             if ($includeLetters === 'include') {
-                $output = addChars($output, $letters, $pwdLenght % $parts, $repetitions === 'yes');
+                $output = addChars($output, $letters, $pwdLength % $parts, $repetitions === 'yes');
             } elseif ($includeNumbers === 'include') {
-                $output = addChars($output, $numbers, $pwdLenght % $parts, $repetitions === 'yes');
+                $output = addChars($output, $numbers, $pwdLength % $parts, $repetitions === 'yes');
             } elseif ($includeSymbols === 'include') {
-                $output = addChars($output, $symbols, $pwdLenght % $parts, $repetitions === 'yes');
+                $output = addChars($output, $symbols, $pwdLength % $parts, $repetitions === 'yes');
             }
         }
 
