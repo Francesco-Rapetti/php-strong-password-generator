@@ -72,7 +72,7 @@
             <div class="row align-items-center mb-3">
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary" id="submit-button">Genera</button>
-                    <button type="reset" class="btn btn-secondary">Annulla</button>
+                    <button type="reset" class="btn btn-secondary" id="reset-button">Annulla</button>
                     <span id="warning-text" class="text-danger ms-3 d-none">Password troppo lunga per evitare ripetizioni</span>
                 </div>
             </div>
@@ -82,6 +82,11 @@
 </html>
 
 <script>
+    const resetButton = document.getElementById('reset-button');
+    resetButton.addEventListener('click', (event) => {
+        resetInputStyle();
+    })
+
     const submitButton = document.getElementById('submit-button');
     submitButton.addEventListener('click', (event) => {
         const pwdLenght = document.getElementById('pwdLength').value;
@@ -95,11 +100,7 @@
         const htmlElementNumbers = document.getElementById('numbers');
         const htmlElementSymbols = document.getElementById('symbols');
 
-        warningText.classList.add('d-none');
-        htmlElementPwdLength.classList.remove('border-danger');
-        htmlElementLetters.classList.remove('border-danger');
-        htmlElementNumbers.classList.remove('border-danger');
-        htmlElementSymbols.classList.remove('border-danger');
+        resetInputStyle();
 
         if (!letters && !numbers && !symbols) {
             event.preventDefault();
@@ -149,6 +150,20 @@
             }
         }
     })
+
+    function resetInputStyle() {
+        const warningText = document.getElementById('warning-text');
+        const htmlElementPwdLength = document.getElementById('pwdLength');
+        const htmlElementLetters = document.getElementById('letters');
+        const htmlElementNumbers = document.getElementById('numbers');
+        const htmlElementSymbols = document.getElementById('symbols');
+
+        warningText.classList.add('d-none');
+        htmlElementPwdLength.classList.remove('border-danger');
+        htmlElementLetters.classList.remove('border-danger');
+        htmlElementNumbers.classList.remove('border-danger');
+        htmlElementSymbols.classList.remove('border-danger');
+    }
 </script>
 
 <style>
