@@ -15,7 +15,7 @@
         for ($i = 0; $i < $singlePart; $i++) {
             $index = rand(0, strlen($output) - 1);
             $newChar = $chars[rand(0, strlen($chars) - 1)];
-            if (str_contains($chars, $output[$index])) {
+            if ($output[$index] !== ' ') {
                 $i--;
                 continue;
             }
