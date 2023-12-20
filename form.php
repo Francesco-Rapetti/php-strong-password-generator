@@ -18,7 +18,7 @@
 
                 <div class="col-6">
                     <div class="mb-3">
-                        <input class="form-control" type="number" name="pwdLenght" id="pwdLenght">
+                        <input class="form-control" type="number" name="pwdLength" id="pwdLength" required>
                     </div>
                 </div>
             </div>
@@ -71,14 +71,85 @@
 
             <div class="row align-items-center mb-3">
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Genera</button>
+                    <button type="submit" class="btn btn-primary" id="submit-button">Genera</button>
                     <button type="reset" class="btn btn-secondary">Annulla</button>
+                    <span id="warning-text" class="text-danger ms-3 d-none">Password troppo lunga per evitare ripetizioni</span>
                 </div>
             </div>
         </form>
 </body>
 
 </html>
+
+<script>
+    const submitButton = document.getElementById('submit-button');
+    submitButton.addEventListener('click', (event) => {
+        const pwdLenght = document.getElementById('pwdLength').value;
+        const moreChar = document.querySelector('input[name="moreChar"]:checked').value == 'yes' ? true : false;
+        const letters = document.getElementById('letters').checked;
+        const numbers = document.getElementById('numbers').checked;
+        const symbols = document.getElementById('symbols').checked;
+        const warningText = document.getElementById('warning-text');
+        const htmlElementPwdLength = document.getElementById('pwdLength');
+        const htmlElementLetters = document.getElementById('letters');
+        const htmlElementNumbers = document.getElementById('numbers');
+        const htmlElementSymbols = document.getElementById('symbols');
+
+        warningText.classList.add('d-none');
+        htmlElementPwdLength.classList.remove('border-danger');
+        htmlElementLetters.classList.remove('border-danger');
+        htmlElementNumbers.classList.remove('border-danger');
+        htmlElementSymbols.classList.remove('border-danger');
+
+        if (!letters && !numbers && !symbols) {
+            event.preventDefault();
+            warningText.classList.remove('d-none');
+            warningText.innerHTML = 'Selezionare almeno una caratteristica';
+            htmlElementLetters.classList.add('border-danger');
+            htmlElementNumbers.classList.add('border-danger');
+            htmlElementSymbols.classList.add('border-danger');
+        }
+
+        if (!moreChar) {
+            if (letters && !numbers && !symbols && pwdLenght > 25) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            } else if (!letters && numbers && !symbols && pwdLenght > 10) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            } else if (!letters && !numbers && symbols && pwdLenght > 13) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            } else if (letters && numbers && !symbols && pwdLenght > 21) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            } else if (letters && !numbers && symbols && pwdLenght > 25) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            } else if (!letters && numbers && symbols && pwdLenght > 20) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            } else if (letters && numbers && symbols && pwdLenght > 32) {
+                event.preventDefault();
+                warningText.classList.remove('d-none');
+                warningText.innerHTML = 'Password troppo lunga per evitare ripetizioni';
+                htmlElementPwdLength.classList.add('border-danger')
+            }
+        }
+    })
+</script>
 
 <style>
     .container-fluid {
